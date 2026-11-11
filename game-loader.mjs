@@ -19,7 +19,7 @@ async function startGame(Engine, config, ui, timeoutMs) {
     ui.progress.hidden = false;
     ui.progress.removeAttribute('value');
     ui.retry.hidden = true;
-    ui.status.textContent = '모험을 준비하고 있어요...';
+    ui.status.textContent = '종이 숲으로 가는 길을 열어요...';
     const deadline = new Promise((_, reject) => {
       timer = setTimeout(() => reject(new Error('게임 준비 응답 시간이 초과됐어요. 네트워크를 확인하고 다시 시도해 주세요.')), timeoutMs);
     });
@@ -36,12 +36,17 @@ async function startGame(Engine, config, ui, timeoutMs) {
       onProgress(current, total) {
         if (!active) return;
         if (Number.isFinite(total) && total > 0 && Number.isFinite(current) && current >= 0) {
-          ui.progress.max = total;
-          ui.progress.value = Math.min(current, total);
-          ui.status.textContent = `모험을 내려받는 중 · ${Math.floor(Math.min(current / total, 1) * 100)}%`;
+          if (current < total) {
+            ui.progress.max = total;
+            ui.progress.value = current;
+            ui.status.textContent = `모험을 담고 있어요 · ${Math.floor(current / total * 100)}%`;
+          } else {
+            ui.progress.removeAttribute('value');
+            ui.status.textContent = '첫 장을 펼치고 있어요...';
+          }
         } else {
           ui.progress.removeAttribute('value');
-          ui.status.textContent = '모험을 준비하고 있어요...';
+          ui.status.textContent = '종이 숲으로 가는 길을 열어요...';
         }
       },
     });
@@ -52,7 +57,7 @@ async function startGame(Engine, config, ui, timeoutMs) {
   } catch (error) {
     active = false;
     ui.overlay.hidden = false;
-    ui.status.textContent = `게임을 열지 못했어요. ${error instanceof Error ? error.message : String(error)}`;
+    ui.status.textContent = `첫 장을 펼치지 못했어요. ${error instanceof Error ? error.message : String(error)}`;
     ui.progress.hidden = true;
     ui.retry.hidden = false;
     return false;
