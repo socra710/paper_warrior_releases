@@ -8,7 +8,7 @@
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" href="assets/favicon_32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/apple_touch_icon.png">
-  <link rel="stylesheet" href="site.css?v=825be9465dd8ea52">
+  <link rel="stylesheet" href="site.css?v=8e01fab6689779d3">
   <link rel="stylesheet" href="game-loader.css?v=ff512f25ce749d6b">
   <link id="-gd-engine-icon" rel="icon" type="image/png" href="play.icon.png" />
 <link rel="apple-touch-icon" href="play.apple-touch-icon.png"/>
@@ -22,7 +22,7 @@
       <a class="brand" href="./" aria-label="종이전사 소개">
         <img class="brand-logo" src="assets/logo_wordmark.png" width="704" height="224" alt="종이전사 · PAPER WARRIOR">
       </a>
-      <span class="prototype-badge">v0.4.0 · 개발 중</span>
+      <span class="prototype-badge">v0.4.1 · 개발 중</span>
     </header>
     <section class="game-window" id="game-area" aria-label="종이전사 게임">
       <div class="window-chrome"><span>한 장의 작은 모험</span><span aria-hidden="true">✦</span></div>
@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-      <div class="window-footer"><span>차근차근 접어 가는 중이에요</span><span>v0.4.0</span></div>
+      <div class="window-footer"><span>차근차근 접어 가는 중이에요</span><span>v0.4.1</span></div>
     </section>
     <aside class="play-description" aria-label="프로토타입 안내">
       <p class="play-tagline">한 장의 종이에서, 나만의 모험으로.</p>
@@ -68,12 +68,12 @@
     });
     const engineReady = new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = 'play-85910fb28799b5d2.js';
+      script.src = 'play-203d247b16bd9251.js';
       script.onload = () => resolve(window.Engine);
       script.onerror = () => reject(new Error('게임 엔진 파일을 받지 못했어요. 네트워크를 확인해 주세요.'));
       document.body.appendChild(script);
     });
-    await bootGame(engineReady, {"args":[],"canvasResizePolicy":0,"ensureCrossOriginIsolationHeaders":true,"executable":"play-85910fb28799b5d2","experimentalVK":false,"fileSizes":{"play-85910fb28799b5d2.pck":2682000,"play-85910fb28799b5d2.wasm":43699190},"focusCanvas":false,"gdextensionLibs":[]}, ui);
+    await bootGame(engineReady, {"args":[],"canvasResizePolicy":0,"ensureCrossOriginIsolationHeaders":true,"executable":"play-203d247b16bd9251","experimentalVK":false,"fileSizes":{"play-203d247b16bd9251.pck":2682000,"play-203d247b16bd9251.wasm":43699190},"focusCanvas":false,"gdextensionLibs":[]}, ui);
   </script>
 </body>
 </html>
